@@ -1,0 +1,285 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background-color: white; /* Ensure the body remains white */
+    color: black;
+    text-align: center;
+    line-height: 1;
+}
+
+/* Blue Background Wrapper */
+.blue-background {
+    background-color: #0066a1; /* Blue background */
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 800px; /* Adjust width for better content placement */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header and Logo */
+header {
+    padding: 20px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-top: -30px; 
+    margin-left: -130px;
+}
+
+/* Logo Boxes */
+.logo-box {
+    width: 18px;
+    height: 18px;   
+    text-align: center;
+    line-height: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    border-radius: 1px;
+}
+
+.red { background-color: #d91e44; }
+.blue { background-color: #2992d0; }
+.green { background-color: #9fc63b; }
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Main Content */
+main {
+    padding: 20px 20px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+    margin-top: -50px;
+}
+
+.subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom:px;
+    color: white;
+}
+
+/* Get Domain Button */
+#getButtonBox {
+    display: inline-block;
+    background-color: #8dc63f;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 15px 30px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 20px 0;
+    min-width: 250px;
+}
+
+#getButtonBox:hover {
+    background-color: #7ab52e;
+}
+
+/* Info Text */
+.info-text {
+    font-size: 16px;
+    margin: 15px auto;
+    max-width: 800px;
+    line-height: 1.5;
+    color: white;
+    text-align: left;
+    display: inline-block; /* Makes it inline-block */
+    width: auto; /* Ensures left alignment */
+    
+    
+
+}
+
+.info-text a {
+    color: white
+    
+}
+
+.info-text a:hover {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Related Searches - Container */
+.related-searches {
+    font-weight: 700;
+    background-color: white; /* Deep blue block */
+    
+    border: 4px solid #dddddd;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    line-height: 41px;
+    margin-bottom: 15px;
+    padding: 40px 20px;
+    color: rgb(0, 0, 0); /* White text */
+    width: 100%;
+    text-align: center;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+
+    /* Center content inside */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Related Searches Title */
+.related-searches h2 {
+    font-size: 22px;
+    color: rgb(0, 0, 0); /* Keep title white */
+    margin-bottom: 25px;
+    text-align: center; /* Center the heading */
+}
+
+/* Search Box - White Background */
+.search-box {
+    background-color: #02198b;
+    border-radius: 20px;
+    border: 2px solid #e8e8e8;
+    height: 110px; /* Increased height by 15px (original was around 50px) */
+    font-size: 25px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 55%; /* Keep width the same */
+    margin: 10px auto;
+    padding: 0 25px; /* Keep horizontal padding */
+    box-shadow: 0 4px 10px rgba(220, 193, 193, 0.904);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Related Searches Title - Standalone */
+.related-searches-title {
+    font-size: 18px;
+    font-weight: normal;
+    color: black;
+    text-align: left;
+    margin-left: 300px; /* Increased from 15px to 55px to move 40px to the right */
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.search-box .text {
+    color: #ffffff; /* Blue text */
+}
+
+
+
+/* Icons */
+.icon {
+    font-size: 20px;
+    color: #02198b; /* Blue icon for contrast */
+    margin-right: 15px;
+}
+
+
+
+.arrow {
+    font-size: 20px;
+    color: white; /* Blue arrow */
+    margin-left: 15px;
+}
+
+
+.search-box:hover {
+    background-color: #00085f; /* Light gray on hover */
+     /* Slight upward movement */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow effect */
+    border-color: #4a29d0; /* Change border color to match the blue theme */
+}
+
+/* Change text and icon color on hover */
+.search-box:hover .text,
+.search-box:hover .icon,
+.search-box:hover .arrow {
+    color: #ffffff; /* Blue color on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-box {
+        width: 90%;
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    font-size: 14px;
+    background-color: white;
+    color: #040404;
+    padding: 20px;
+    border-radius: 0px;
+}
+
+footer a {
+    color: #000000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.disclaimer {
+    font-size: 12px;
+    margin-top: 15px;
+    color: #777;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* More Responsive Adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+    
+    .subtitle {
+        font-size: 18px;
+    }
+    
+    .info-text {
+        max-width: 95%;
+        font-size: 14px;
+    }
+    
+    .search-box {
+        max-width: 95%;
+    }
+    
+    .disclaimer {
+        max-width: 95%;
+    }
+}
