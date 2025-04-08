@@ -1,4 +1,4 @@
-/* General Styling */
+
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -6,7 +6,6 @@ body {
   background-color: #f4f4f4;
 }
 
-/* Resume Container */
 .resume-container {
   display: flex;
   max-width: 1000px;
@@ -17,7 +16,6 @@ body {
   overflow: hidden;
 }
 
-/* Sidebar */
 .sidebar {
   width: 30%;
   background-color: #2c3e50;
@@ -44,7 +42,6 @@ body {
   opacity: 0.8;
 }
 
-/* Sidebar Sections */
 .sidebar h3 {
   margin-top: 20px;
   font-size: 18px;
@@ -68,7 +65,6 @@ body {
   color: #1abc9c;
 }
 
-/* Main Content */
 .main-content {
   width: 70%;
   padding: 30px;
