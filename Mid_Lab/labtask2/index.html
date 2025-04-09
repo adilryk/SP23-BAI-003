@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KFC</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+</head>
+
+<body onclick="closeSidebar(event)">
+  <header>
+    <div class="logo-container">
+      <div class="menu-icon" onclick="toggleSidebar(event)">☰</div>
+      <img class="logo" src="images/download.png" alt="Logo">
+      <div class="sidebar-nav">
+        <button class="imgbutt">
+          <img height="20px" src="images/Delivery.793adbaa710baf75ba78.png" alt=""> DELIVERY
+        </button>
+        <button class="collect">
+          <img height="20px" src="images/pickup.47bb874f83ea6acb5a47.png" alt=""> PICKUP
+        </button>
+        <div class="previous-tasks-container">
+          <button class="previous-tasks-btn" onclick="toggleMegaMenu(event)">Previous Tasks</button>
+          <div class="mega-menu" id="megaMenu">
+            <div class="mega-menu-content">
+              <div class="task-item active" data-index="0">
+                <h4>Assignment 1: CV</h4>
+                <p>Create a CV using HTML and CSS.</p>
+                <a href="assignment1/index.html" target="_blank">View</a>
+              </div>
+              <div class="task-item" data-index="1">
+                <h4>Assignment 2: E-Commerce Landing Page</h4>
+                <p>Build a landing page with product showcase.</p>
+                <a href="assignment2/index.html" target="_blank">View</a>
+              </div>
+              <div class="task-item" data-index="2">
+                <h4>Lab Task 1: Landing Page with Bootstrap</h4>
+                <p>Add responsiveness and UI plugins.</p>
+                <a href="labtask1/index.html" target="_blank">View</a>
+              </div>
+              <div class="task-item" data-index="3">
+                <h4>Lab Task 2: Checkout Page</h4>
+                <p>Form validation with JS for a checkout experience.</p>
+                <a href="labtask2/index.html" target="_blank">View</a>
+              </div>
+            </div>
+            <div class="mega-menu-nav">
+              <button class="prev-btn" onclick="navigateTask(-1)">←</button>
+              <span class="mega-menu-counter">1/4</span>
+              <button class="next-btn" onclick="navigateTask(1)">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="loginBtn" id="logInBtnHead">
+      Login
+    </button>
+  </header>
+
+  <div class="sidebar" id="sidebar" onclick="event.stopPropagation()">
+    <button class="login-btn">LOGIN</button>
+    <div>
+      <div class="toggle-container">
+        <span class="toggle-btn day">Day</span>
+        <span class="toggle-btn night">Night</span>
+      </div>
+
+      <div class="sidebar-navigation">
+        <div class="menu-item">
+          <a href="/store-locations">
+            <img src="sidebarimg/Store-Locator.f6a5770e5b27f36c215d.jpg" alt="Store"> Store Locator
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="/track-order">
+            <img src="sidebarimg/Tracking-order.4b97000517b60dac1935.jpg" alt="Order"> Track Order
+          </a>
+        </div>
+        <div class="menu-item explore-menu">
+          <a href="/menu">
+            <img src="sidebarimg/Explore-menu.5a4a8ea8405b961694cb.jpg" alt="Menu"> Explore Menu
+          </a>
+        </div>
+
+
+        <hr>
+
+        <div class="menu-item"><a href="/about-us">About Us</a></div>
+        <div class="menu-item"><a href="/feedBack">Feedback</a></div>
+        <div class="menu-item"><a href="/terms-condition">Terms & Conditions</a></div>
+        <div class="menu-item"><a href="/privacy-policy">Privacy Policy</a></div>
+        <div class="menu-item"><a href="/contact-Us">Contact Us</a></div>
+        <div class="menu-item"><a href="/mitao-Bhook">Mitao Bhook</a></div>
+        <div class="menu-item"><a href="/mitao-bhook-scholarship">Mitao Bhook Scholarship</a></div>
+        <div class="menu-item"><a href="/careers-page">Careers</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-page" id="loginPage">
+    <div class="login-container">
+      <div class="login-header">
+        <button class="close-login" onclick="closeLoginPage()">&times;</button>
+        <h2>Login to KFC</h2>
+      </div>
+      <div class="login-form">
+        <div class="phone-input">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" placeholder="Enter your phone number" pattern="[0-9]{11}" required>
+        </div>
+        <button class="login-submit-btn">Login</button>
+        <div class="divider">
+          <span>or</span>
+        </div>
+        <button class="google-login-btn">
+          <img src="https://www.google.com/favicon.ico" alt="Google" width="20">
+          Continue with Google
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="printLogin"></div>
+  <main id="mainCon">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images\892f12f0-fb81-11ed-9cfc-13924e99eefd-DUO-Box-1920x420_desktop_image-2023-05-26045528.jpg"
+            class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img
+            src="images\88d05120-fb81-11ed-919a-ef9f5e8ff903-Equity-Banner-1920x420_desktop_image-2023-05-26045528.jpg"
+            class="d-block w-100" alt="...">
+        </div>
+
+      </div>
+      <span id="LeftBtn">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+      </span>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <button class="reorder">
+      REORDER
+    </button>
+    <p class="menuHead">
+      <span class="under">EXPLO</span>RE MENU
+    </p>
+    <div class="slide-container swiper">
+      <div class="slide-content">
+        <div class="card-wrapper swiper-wrapper">
+          <div class="cardsRoud swiper-slide">
+            <div class="imgecontont">
+              <img class="img" src="images/afc4e8b0-ff99-11ed-8640-872ee63b5da0-Krunch-2023-05-31095826.png" alt="">
+            </div>
+            <h6 class="value">Ramadan Offers</h6>
+            <hr class="hafhr">
+            <div class="right">
+              <i class="fa-solid fa-circle fa-sm" style="color: #f1f3f6;"></i>
+            </div>
+          </div>
+
+          <div class="cardsRoud swiper-slide">
+            <div class="imgecontont">
+              <img class="img"
+                src="images/52ba54f0-f850-11ef-9607-233a3fccf207-GroupThumbnail590x480-iftarkibaithak-2025-03-03165534.png"
+                alt="">
+            </div>
+            <h6 class="value">Everyday Value</h6>
+            <hr class="hafhr">
+            <div class="right">
+              <i class="fa-solid fa-circle fa-sm" style="color: #f1f3f6;"></i>
+            </div>
+          </div>
+
+          <div class="cardsRoud swiper-slide">
+            <div class="imgecontont">
+              <img class="img" src="images/afc4e8b0-ff99-11ed-8640-872ee63b5da0-alacart-2023-05-31095826.png" alt="">
+            </div>
+            <h6 class="value">Ala-Carte & Combos</h6>
+            <hr class="hafhr">
+            <div class="right">
+              <i class="fa-solid fa-circle fa-sm" style="color: #f1f3f6;"></i>
+            </div>
+          </div>
+
+          <div class="cardsRoud swiper-slide">
+            <div class="imgecontont">
+              <img class="img" src="images/afc536d0-ff99-11ed-a006-17c81341cbe8-Signaturebox-2023-05-31095826.png"
+                alt="">
+            </div>
+            <h6 class="value">Signature Boxes</h6>
+            <hr class="hafhr">
+            <div class="right">
+              <i class="fa-solid fa-circle fa-sm" style="color: #f1f3f6;"></i>
+            </div>
+          </div>
+
+          <div class="cardsRoud swiper-slide">
+            <div class="imgecontont">
+              <img class="img" src="images/afc4e8b0-ff99-11ed-8640-872ee63b5da0-Sharing-2023-05-31095826.png" alt="">
+            </div>
+            <h6 class="value">Sharing</h6>
+            <hr class="hafhr">
+            <div class="right">
+              <i class="fa-solid fa-circle fa-sm" style="color: #f1f3f6;"></i>
+            </div>
+          </div>
+
+          <div class="cardsRoud swiper-slide">
+            <div class="imgecontont">
+              <img class="img" src="images/afc4e8b0-ff99-11ed-8640-872ee63b5da0-Snacks-2023-05-31095826.png" alt="">
+            </div>
+            <h6 class="value">Snacks & Beverages</h6>
+            <hr class="hafhr">
+            <div class="right">
+              <i class="fa-solid fa-circle fa-sm" style="color: #f1f3f6;"></i>
+            </div>
+          </div>
+
+          <div class="cardsRoud swiper-slide">
+            <div class="imgecontont">
+              <img class="img" src="images/afc49a90-ff99-11ed-aad1-a133693e27ae-Midnight-2023-05-31095826.png" alt="">
+            </div>
+            <h6 class="value">Midnight (Starts at 12 am)</h6>
+            <hr class="hafhr">
+            <div class="right">
+              <i class="fa-solid fa-circle fa-sm" style="color: #f1f3f6;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next swiper-navBtn"></div>
+      <div class="swiper-button-prev swiper-navBtn"></div>
+    </div>
+
+    <h3 class="bestSeller"><span class="under"> BESTSELLERS</span> </h3>
+    <div class="flexs overflow-auto">
+      <div class="overflow">
+        <div class="mainRebben">
+          <div class="redRibben"></div>
+          <div class="redRibben left"></div>
+          <div class="redRibben left"></div>
+        </div>
+        <h6 class="cardhead">Krunch Burger</h6>
+        <div class="price">
+          <div class="arrow-right">
+          </div>
+          <p class="prices"><sub> Rs</sub>250</p>
+        </div>
+        <img class="cardImag" height="280px"
+          src="images\43a9fb50-ffaa-11ed-8180-812e571998fe-krunch_variant_0-2023-05-31115706.png" alt="">
+      </div>
+
+
+      <div class="overflow">
+        <div class="mainRebben">
+          <div class="redRibben"></div>
+          <div class="redRibben left"></div>
+          <div class="redRibben left"></div>
+        </div>
+        <h6 class="cardhead">Krunch Burger</h6>
+        <div class="price">
+          <div class="arrow-right">
+          </div>
+          <p class="prices"><sub> Rs</sub>250</p>
+        </div>
+        <img class="cardImag" height="280px"
+          src="images\43a9fb50-ffaa-11ed-8180-812e571998fe-crunch-with-fries-and-drink-2023-05-31115706.png" alt="">
+      </div>
+      <div class="overflow">
+        <div class="mainRebben">
+          <div class="redRibben"></div>
+          <div class="redRibben left"></div>
+          <div class="redRibben left"></div>
+        </div>
+        <h6 class="cardhead">Hot Wings Bucket</h6>
+        <div class="price">
+          <div class="arrow-right">
+          </div>
+          <p class="prices"><sub> Rs</sub>550</p>
+        </div>
+        <img class="cardImag" height="280px"
+          src="images\43a9fb50-ffaa-11ed-8180-812e571998fe-HotWings_variant_0-2023-05-31115706.png" alt="">
+      </div>
+
+      <div class="overflow">
+        <div class="mainRebben">
+          <div class="redRibben"></div>
+          <div class="redRibben left"></div>
+          <div class="redRibben left"></div>
+        </div>
+        <h6 class="cardhead">Mighty Zinger</h6>
+        <div class="price">
+          <div class="arrow-right">
+          </div>
+          <p class="prices"><sub> Rs</sub>680</p>
+        </div>
+        <img class="cardImag" height="280px"
+          src="images\33685b40-0461-11ee-911c-497570899609-Mighty_variant_0-2023-06-06115641.png" alt="">
+      </div>
+
+      <div class="overflow">
+        <div class="mainRebben">
+          <div class="redRibben"></div>
+          <div class="redRibben left"></div>
+          <div class="redRibben left"></div>
+        </div>
+        <h6 class="cardhead">Krunch Combo</h6>
+        <div class="price">
+          <div class="arrow-right">
+          </div>
+          <p class="prices"><sub> Rs</sub>490</p>
+        </div>
+        <img class="cardImag" height="280px"
+          src="images\43a9fb50-ffaa-11ed-8180-812e571998fe-crunch-with-fries-and-drink-2023-05-31115706.png" alt="">
+      </div>
+
+
+
+
+    </div>
+
+    <div class="deals-container">
+      <h3 class="menuHead"><span class="under">TOP</span> DEALS</h3>
+
+      <div class="deals-wrapper">
+
+        <div class="dealsCard">
+          <div class="mainRebbenSec">
+            <div class="redRibbens">
+              <div class="redRibben"></div>
+              <div class="redRibben left"></div>
+              <div class="redRibben left"></div>
+            </div>
+            <i class="fa-regular fa-heart fa-xl heart-icon"></i>
+          </div>
+          <img src="images/63fb28b0-9627-11ef-b5b6-331c16c28159-CrispyDuoBox-2024-10-29185539.png" class="cardimg"
+            alt="Crispy Duo Box">
+          <h5 class="name">Crispy Duo Box</h5>
+          <p class="description">Turn up the fun with 5 pcs Hot & Crispy Chicken + 1 Large fries + 2 Regular drinks</p>
+          <p class="priceDeal">Rs 1350</p>
+          <button class="bttnCard">+ ADD TO BUCKET</button>
+        </div>
+
+
+        <div class="dealsCard">
+          <div class="mainRebbenSec">
+            <div class="redRibbens">
+              <div class="redRibben"></div>
+              <div class="redRibben left"></div>
+              <div class="redRibben left"></div>
+            </div>
+            <i class="fa-regular fa-heart fa-xl heart-icon"></i>
+          </div>
+          <img src="images/63fb28b0-9627-11ef-be4f-a734b6b6ba4f-XtremeDuoBox-2024-10-29185539.png" class="cardimg"
+            alt="Xtreme Duo Box">
+          <h5 class="name">Xtreme Duo Box</h5>
+          <p class="description">2 Signature Zingers + 2 pcs Hot & Crispy Chicken + 1 Large fries + 2 Regular drinks</p>
+          <p class="priceDeal">Rs 1560</p>
+          <button class="bttnCard">+ ADD TO BUCKET</button>
+        </div>
+
+
+        <div class="dealsCard">
+          <div class="mainRebbenSec">
+            <div class="redRibbens">
+              <div class="redRibben"></div>
+              <div class="redRibben left"></div>
+              <div class="redRibben left"></div>
+            </div>
+            <i class="fa-regular fa-heart fa-xl heart-icon"></i>
+          </div>
+          <img
+            src="images/52ba54f0-f850-11ef-9607-233a3fccf207-GroupThumbnail590x480-iftarkibaithak-2025-03-03165534.png"
+            class="cardimg" alt="Iftar Ki Baithak">
+          <h5 class="name">Iftar Ki Baithak</h5>
+          <p class="description">3 Zingers, 8 Wings, 1 Fries Bucket, and 3 Drinks</p>
+          <p class="priceDeal">Rs 1790</p>
+          <button class="bttnCard">+ ADD TO BUCKET</button>
+        </div>
+
+
+        <div class="dealsCard">
+          <div class="mainRebbenSec">
+            <div class="redRibbens">
+              <div class="redRibben"></div>
+              <div class="redRibben left"></div>
+              <div class="redRibben left"></div>
+            </div>
+            <i class="fa-regular fa-heart fa-xl heart-icon"></i>
+          </div>
+          <img src="images/634e6df0-9627-11ef-b12f-312c6a2b6968-family-Festivle-3-2024-10-29185538.png" class="cardimg"
+            alt="Family Festival 3">
+          <h5 class="name">Family Festival 3</h5>
+          <p class="description">4 Zinger burgers + 4 pcs Hot and Crispy Chicken + 1.5 Liter drink</p>
+          <p class="priceDeal">Rs 2590</p>
+          <button class="bttnCard">+ ADD TO BUCKET</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="firstCardTitle">
+
+      <img src="images\pickup-banner.01fde5a7db5ef06f7bce.png" class="img-height img-fluid" alt="...">
+      <img src="images\favorites-banner.afff26bc6d0127f68baa.png" class="img-height img-fluid" alt="...">
+      <img src="images\scamOrdr.6f809bf83912dd8dbe31.jpg" class="img-fluid img-height" alt="...">
+
+
+
+
+      <div class="card FourtCard" style="width: 36rem;">
+        <div class="card-body">
+          <img src="images\kfc-meal.afc417f5d19998efd26b.png" class="img-fluid card-img" alt="...">
+          <p class="explore">Adding 11 herbs and spices, Explore our menu and add items to your cart.</p>
+          <button class="fourthImagCardButt">EXPLORE MENU</button>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+    <footer class=" text-white pt-4 pb-3">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-4">
+            <h5>KFC</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white text-decoration-none">About Us</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Mitao Bhook</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Mitao Bhook - Scholarship</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
+            </ul>
+          </div>
+
+
+          <div class="col-md-4">
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Store Locator</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Track Order</a></li>
+            </ul>
+          </div>
+
+
+          <div class="col-md-4 text-md-end">
+            <h6>Terms & Conditions</h6>
+            <div class="d-flex justify-content-md-end gap-2">
+              <a href="#"><img src="images/youtube.png" alt="YouTube" width="30"></a>
+              <a href="#"><img src="images/instagram.png" alt="Instagram" width="30"></a>
+              <a href="#"><img src="images/facebook.png" alt="Facebook" width="30"></a>
+            </div>
+            <div class="mt-3">
+              <a href="#"><img src="images/download (1).png" alt="App Store" width="120"></a>
+              <a href="#"><img src="images/download (2).png" alt="Google Play" width="120"></a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="bg-light">
+
+        <div class="text-center">
+          <p class="mb-0">&copy; 2025 KFC. All rights reserved</p>
+          <p class="mb-0">Powered by <a href="#" class="text-white fw-bold">Adil Shafique</a></p>
+        </div>
+      </div>
+    </footer>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+      function toggleSidebar(event) {
+        event.stopPropagation();
+        const sidebar = document.getElementById('sidebar');
+        const megaMenu = document.getElementById('megaMenu');
+        
+        // Close mega menu if open
+        if (megaMenu.classList.contains('open')) {
+          megaMenu.classList.remove('open');
+          setTimeout(() => {
+            megaMenu.style.display = 'none';
+          }, 300);
+        }
+        
+        sidebar.classList.toggle('open');
+      }
+
+      function closeSidebar(event) {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
+      }
+
+      // Login functionality
+      const loginButtons = document.querySelectorAll('.loginBtn, .login-btn');
+      const loginPage = document.getElementById('loginPage');
+
+      loginButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Close mega menu if open
+          const megaMenu = document.getElementById('megaMenu');
+          if (megaMenu.classList.contains('open')) {
+            megaMenu.classList.remove('open');
+            setTimeout(() => {
+              megaMenu.style.display = 'none';
+            }, 300);
+          }
+          
+          loginPage.style.display = 'flex';
+        });
+      });
+
+      function closeLoginPage() {
+        loginPage.style.display = 'none';
+      }
+
+      // Phone number validation
+      const phoneInput = document.getElementById('phoneNumber');
+      phoneInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 11);
+      });
+
+      // Enhanced Mega Menu functionality
+      const megaMenu = document.getElementById('megaMenu');
+      const previousTasksBtn = document.querySelector('.previous-tasks-btn');
+      let isMenuOpen = false;
+
+      function toggleMegaMenu(event) {
+        event.stopPropagation();
+        const sidebar = document.getElementById('sidebar');
+        
+        // Close sidebar if open
+        if (sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
+        
+        // Close login page if open
+        if (loginPage.style.display === 'flex') {
+          loginPage.style.display = 'none';
+        }
+        
+        isMenuOpen = !isMenuOpen;
+        
+        // Add/remove open class with transition
+        if (isMenuOpen) {
+          megaMenu.style.display = 'block';
+          // Trigger reflow
+          megaMenu.offsetHeight;
+          megaMenu.classList.add('open');
+        } else {
+          megaMenu.classList.remove('open');
+          // Wait for transition to complete before hiding
+          setTimeout(() => {
+            if (!megaMenu.classList.contains('open')) {
+              megaMenu.style.display = 'none';
+            }
+          }, 300);
+        }
+      }
+
+      // Close mega menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const sidebar = document.getElementById('sidebar');
+        const megaMenu = document.getElementById('megaMenu');
+        const previousTasksBtn = document.querySelector('.previous-tasks-btn');
+        
+        // Close mega menu if clicking outside
+        if (isMenuOpen && !megaMenu.contains(event.target) && event.target !== previousTasksBtn) {
+          isMenuOpen = false;
+          megaMenu.classList.remove('open');
+          setTimeout(() => {
+            megaMenu.style.display = 'none';
+          }, 300);
+        }
+        
+        // Close sidebar if clicking outside
+        if (sidebar.classList.contains('open') && !sidebar.contains(event.target) && event.target !== document.querySelector('.menu-icon')) {
+          sidebar.classList.remove('open');
+        }
+      });
+
+      // Close mega menu when pressing Escape key
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          const megaMenu = document.getElementById('megaMenu');
+          const sidebar = document.getElementById('sidebar');
+          
+          if (megaMenu.classList.contains('open')) {
+            isMenuOpen = false;
+            megaMenu.classList.remove('open');
+            setTimeout(() => {
+              megaMenu.style.display = 'none';
+            }, 300);
+          }
+          
+          if (sidebar.classList.contains('open')) {
+            sidebar.classList.remove('open');
+          }
+          
+          if (loginPage.style.display === 'flex') {
+            loginPage.style.display = 'none';
+          }
+        }
+      });
+
+      // Prevent mega menu from closing when clicking inside it
+      megaMenu.addEventListener('click', (event) => {
+        event.stopPropagation();
+      });
+
+      // Task Navigation
+      let currentTaskIndex = 0;
+      const totalTasks = 4;
+
+      function navigateTask(direction) {
+        const taskItems = document.querySelectorAll('.task-item');
+        const counter = document.querySelector('.mega-menu-counter');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        // Remove active class from current task
+        taskItems[currentTaskIndex].classList.remove('active');
+
+        // Update index
+        currentTaskIndex += direction;
+        
+        // Handle boundaries
+        if (currentTaskIndex < 0) currentTaskIndex = totalTasks - 1;
+        if (currentTaskIndex >= totalTasks) currentTaskIndex = 0;
+
+        // Add active class to new task
+        taskItems[currentTaskIndex].classList.add('active');
+
+        // Update counter
+        counter.textContent = `${currentTaskIndex + 1}/${totalTasks}`;
+
+        // Update button states
+        prevBtn.disabled = currentTaskIndex === 0;
+        nextBtn.disabled = currentTaskIndex === totalTasks - 1;
+      }
+
+      // Initialize navigation
+      document.addEventListener('DOMContentLoaded', () => {
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        prevBtn.disabled = true;
+      });
+    </script>
+  </body>
+</html>
