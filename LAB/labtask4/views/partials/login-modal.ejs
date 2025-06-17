@@ -1,0 +1,342 @@
+<div class="login-page" id="loginPage">
+    <div class="login-container">
+        <div class="login-header">
+            <button class="close-login" onclick="closeLoginPage()">&times;</button>
+            <h2>Welcome to KFC</h2>
+        </div>
+        
+        <!-- Flash Messages -->
+        <% if (typeof messages !== 'undefined') { %>
+            <% if (messages.error) { %>
+                <div class="alert alert-danger"><%= messages.error %></div>
+            <% } %>
+            <% if (messages.success) { %>
+                <div class="alert alert-success"><%= messages.success %></div>
+            <% } %>
+        <% } %>
+
+        <!-- Login Form -->
+        <div class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="login-submit-btn" onclick="handleLogin()">Login</button>
+            <div class="divider">
+                <span>or</span>
+            </div>
+            <button class="google-login-btn">
+                <img src="https://www.google.com/favicon.ico" alt="Google" width="20">
+                Continue with Google
+            </button>
+            <p class="switch-form">Don't have an account? <a href="#" onclick="toggleForms()">Register here</a></p>
+        </div>
+
+        <!-- Register Form -->
+        <div class="register-form" id="registerForm" style="display: none;">
+            <div class="form-group">
+                <label for="registerName">Full Name</label>
+                <input type="text" id="registerName" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="login-submit-btn" onclick="handleRegister()">Register</button>
+            <p class="switch-form">Already have an account? <a href="#" onclick="toggleForms()">Login here</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+function closeLoginPage() {
+    document.getElementById('loginPage').style.display = 'none';
+}
+
+function toggleForms() {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    
+    if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+    } else {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+    }
+}
+
+async function handleLogin() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    try {
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            window.location.href = '/dashboard';
+        } else {
+            alert(data.message || 'Login failed');
+        }
+    } catch (error) {
+        alert('An error occurred during login');
+    }
+}
+
+async function handleRegister() {
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+
+    try {
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, password, confirmPassword })
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            alert('Registration successful! Please login.');
+            toggleForms();
+        } else {
+            alert(data.message || 'Registration failed');
+        }
+    } catch (error) {
+        alert('An error occurred during registration');
+    }
+}
+</script>
+
+<style>
+.login-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 15px;
+    border-radius: 6px;
+    width: 90%;
+    max-width: 260px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.login-header h2 {
+    font-size: 1rem;
+    color: #e4000f;
+    margin: 0;
+}
+
+.close-login {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+    padding: 0;
+    line-height: 1;
+    margin-left: 4px;
+}
+
+.close-login:hover {
+    color: #e4000f;
+}
+
+.form-group {
+    margin-bottom: 6px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 2px;
+    color: #444;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #e4000f;
+    box-shadow: 0 0 0 1px rgba(228, 0, 15, 0.1);
+}
+
+.login-submit-btn {
+    width: 100%;
+    padding: 6px;
+    background-color: #e4000f;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+    transition: background-color 0.2s;
+}
+
+.login-submit-btn:hover {
+    background-color: #c4000d;
+}
+
+.divider {
+    text-align: center;
+    margin: 6px 0;
+    position: relative;
+    color: #666;
+    font-size: 0.7rem;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.google-login-btn {
+    width: 100%;
+    padding: 6px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    transition: background-color 0.2s;
+}
+
+.google-login-btn img {
+    width: 14px;
+    height: 14px;
+}
+
+.google-login-btn:hover {
+    background-color: #f8f8f8;
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 6px;
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.switch-form a {
+    color: #e4000f;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.switch-form a:hover {
+    color: #c4000d;
+}
+
+.alert {
+    padding: 4px 8px;
+    margin-bottom: 6px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+}
+
+.alert-danger {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.alert-success {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #dcfce7;
+}
+
+/* Animation for modal */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.login-container {
+    animation: modalFadeIn 0.15s ease-out;
+}
+</style> 

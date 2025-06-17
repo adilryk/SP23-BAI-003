@@ -1,0 +1,197 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1051;
+  background-color: var(--background-color);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.sidebar-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 20px;
+}
+
+.imgbutt,
+.collect {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.imgbutt:hover,
+.collect:hover {
+  background-color: var(--primary-color);
+}
+
+.imgbutt img,
+.collect img {
+  margin-right: 8px;
+}
+
+/* Sidebar Menu Icon */
+.menu-icon {
+  position: relative;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--primary-color);
+  z-index: 1052;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100vh;
+  background: var(--background-color);
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+  z-index: 1050;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+/* Sidebar Menu Items */
+.sidebar-navigation {
+  margin-top: 60px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.menu-item:last-child {
+  margin-bottom: 20px;
+}
+
+/* Sidebar Links */
+.menu-item a {
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.menu-item a:hover {
+  color: var(--hover-color);
+}
+
+/* Login Button */
+.login-btn {
+  display: block;
+  width: 120px;
+  text-align: center;
+  padding: 10px 15px;
+  margin: 15px auto;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.login-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Toggle Button (Day/Night) */
+.toggle-container {
+  position: absolute;
+  top: 88px;
+  right: 10px;
+  background: var(--toggle-bg);
+  padding: 5px;
+  border-radius: 20px;
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toggle-btn {
+  padding: 5px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.75rem;
+  display: inline-block;
+  transition: background 0.3s ease-in-out;
+}
+
+.day {
+  background: black;
+  color: white;
+}
+
+.night {
+  background: red;
+  color: white;
+  margin-left: 5px;
+}
+
+.menu-item img {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+hr {
+  border: 0.5px solid var(--border-color);
+  margin: 15px 0;
+}
+
+.loginBtn {
+  background-color: red;
+  border: red;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: white;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .sidebar-nav {
+    display: none;
+  }
+  
+  .logo-container {
+    gap: 10px;
+  }
+  
+  .logo {
+    height: 30px;
+  }
+} 

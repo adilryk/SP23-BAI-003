@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+<main class="container mt-4">
+    <h1>Our Menu</h1>
+    <div class="row">
+        <% products.forEach(product => { %>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="<%= product.image %>" class="card-img-top" alt="<%= product.title %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= product.title %></h5>
+                        <p class="card-text"><%= product.description %></p>
+                        <p class="card-text"><strong>Price: $<%= product.price.toFixed(2) %></strong></p>
+                        <form action="/menu" method="POST">
+                            <input type="hidden" name="productId" value="<%= product._id %>">
+                            <div class="input-group mb-3">
+                                <input type="number" name="quantity" value="1" min="1" class="form-control" style="width: 70px">
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</main>
+<%- include('partials/footer') %> 

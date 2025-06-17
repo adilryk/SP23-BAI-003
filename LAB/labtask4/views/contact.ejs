@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you! Please fill out the form below and we'll get back to you as soon as possible.</p>
+            
+            <form action="/contact" method="POST" class="mt-4">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="col-md-6">
+            <h2>Our Location</h2>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">KFC Main Branch</h5>
+                    <p class="card-text">
+                        123 Food Street<br>
+                        City, State 12345<br>
+                        United States
+                    </p>
+                    <p class="card-text">
+                        <strong>Phone:</strong> (123) 456-7890<br>
+                        <strong>Email:</strong> info@kfc.com
+                    </p>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Business Hours</h5>
+                    <p class="card-text">
+                        Monday - Friday: 9:00 AM - 10:00 PM<br>
+                        Saturday - Sunday: 10:00 AM - 11:00 PM
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

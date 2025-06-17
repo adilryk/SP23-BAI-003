@@ -1,0 +1,150 @@
+footer {
+  background-color: var(--card-bg);
+  color: white;
+  padding: 2rem 0;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+footer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Icons */
+.fooIcon {
+  background-color: white;
+  padding: 8px;
+  height: 32px;
+  border-radius: 50px;
+  margin-top: 5px;
+  margin-left: 30px;
+  transition: transform 0.3s ease;
+}
+
+.fooIcon:hover {
+  transform: scale(1.1);
+}
+
+.margin {
+  background-color: white;
+  padding: 8px;
+  height: 32px;
+  border-radius: 50px;
+  margin-top: 5px;
+  margin-left: 20px;
+  transition: transform 0.3s ease;
+}
+
+.margin:hover {
+  transform: scale(1.1);
+}
+
+/* Footer Links */
+.fooTr {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.linkFoo {
+  text-decoration: none;
+  color: white;
+  font-size: large;
+  transition: color 0.3s ease;
+}
+
+.linkFoo:hover {
+  color: var(--primary-color);
+}
+
+/* Footer Lists */
+.decoration {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* App Store and Play Store Buttons */
+.fooImgBtn {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.fooImgBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Footer Buttons */
+.fooImgBtn img {
+  max-width: 120px;
+  height: auto;
+}
+
+/* Copyright */
+.copyright {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #bbb;
+  font-size: 14px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  footer {
+    padding: 1.5rem 0;
+  }
+  
+  .fooTr {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .fooIcon,
+  .margin {
+    margin: 5px;
+  }
+  
+  .fooImgBtn img {
+    max-width: 100px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  footer {
+    padding: 1rem 0;
+  }
+  
+  .linkFoo {
+    font-size: medium;
+  }
+  
+  .fooImgBtn img {
+    max-width: 80px;
+  }
+} 
