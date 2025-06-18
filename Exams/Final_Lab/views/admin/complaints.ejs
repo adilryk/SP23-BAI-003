@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<div class="container mt-5">
+  <h2>All Complaints (Admin View)</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ticket ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Solution</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% complaints.forEach(c => { %>
+        <tr>
+          <td><%= c._id %></td>
+          <td><%= c.name %></td>
+          <td><%= c.email %></td>
+          <td><%= c.message %></td>
+          <td><%= c.solution %></td>
+          <td><%= new Date(c.timestamp).toLocaleString() %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<%- include('../partials/footer') %> 

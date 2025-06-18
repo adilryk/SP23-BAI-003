@@ -1,0 +1,91 @@
+<%- include('../partials/header') %>
+
+<style>
+.complaint-box {
+  max-width: 350px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 24px 20px 20px 20px;
+  font-family: Arial, sans-serif;
+}
+.complaint-box h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.complaint-box label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+  margin-top: 12px;
+  display: block;
+}
+.complaint-box input,
+.complaint-box textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #bbb;
+  padding: 8px 0 6px 0;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  background: transparent;
+  outline: none;
+  resize: none;
+}
+.complaint-box textarea {
+  min-height: 38px;
+}
+.complaint-box button {
+  width: 100%;
+  background: #fff;
+  border: 2px solid #111;
+  color: #111;
+  font-weight: 700;
+  padding: 8px 0;
+  border-radius: 3px;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.complaint-box button:hover {
+  background: #111;
+  color: #fff;
+}
+</style>
+
+<div class="complaint-box">
+  <h4>Complaints? Let us know <span style="font-size:1.2em;">&#9660;</span></h4>
+  <% if (error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+  <% if (success && ticketId) { %>
+    <div class="alert alert-success">
+      <h4>✅ Thank you!</h4>
+      <p>Your complaint has been submitted. Our team will review it shortly.</p>
+      <p><strong>Ticket ID:</strong> <%= ticketId %></p>
+    </div>
+  <% } else { %>
+  <form action="/complaints/new" method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" autocomplete="off" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="off" required>
+
+    <label for="happened">What has happened?</label>
+    <textarea id="happened" name="happened" placeholder="Please tell us about the incident including as many details as possible" required></textarea>
+
+    <label for="solution">How can we make things right?</label>
+    <input type="text" id="solution" name="solution" placeholder="">
+
+    <button type="submit">SEND</button>
+  </form>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %> 

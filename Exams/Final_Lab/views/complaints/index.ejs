@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+<div class="container mt-5">
+  <h2>My Complaints</h2>
+  <form method="get" action="/complaints" class="mb-4">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit" class="btn btn-primary btn-sm">View My Complaints</button>
+  </form>
+  <% if (error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+  <% if (complaints && complaints.length > 0) { %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Ticket ID</th>
+          <th>Message</th>
+          <th>Solution</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% complaints.forEach(c => { %>
+          <tr>
+            <td><%= c._id %></td>
+            <td><%= c.message %></td>
+            <td><%= c.solution %></td>
+            <td><%= new Date(c.timestamp).toLocaleString() %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else if (complaints) { %>
+    <div class="alert alert-info">No complaints found for this email.</div>
+  <% } %>
+</div>
+<%- include('../partials/footer') %> 

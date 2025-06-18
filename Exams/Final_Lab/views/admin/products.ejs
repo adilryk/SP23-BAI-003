@@ -1,0 +1,92 @@
+<%- include('../partials/header') %>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Manage Products</h1>
+        <a href="/admin/products/add" class="btn btn-success">
+            <i class="fas fa-plus"></i> Add New Product
+        </a>
+    </div>
+
+    <% if (messages.error) { %>
+        <div class="alert alert-danger"><%= messages.error %></div>
+    <% } %>
+    <% if (messages.success) { %>
+        <div class="alert alert-success"><%= messages.success %></div>
+    <% } %>
+
+    <!-- Category Filter -->
+    <div class="mb-4">
+        <div class="btn-group" role="group">
+            <a href="/admin/products" class="btn btn-outline-primary <%= !req.query.category ? 'active' : '' %>">All</a>
+            <% categories.forEach(category => { %>
+                <a href="/admin/products?category=<%= category %>" 
+                   class="btn btn-outline-primary <%= req.query.category === category ? 'active' : '' %>">
+                    <%= category %>
+                </a>
+            <% }); %>
+        </div>
+    </div>
+
+    <% if (products && products.length > 0) { %>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product => { %>
+                        <tr>
+                            <td>
+                                <img src="<%= product.imageUrl %>" alt="<%= product.title %>" 
+                                     class="img-thumbnail" style="width: 50px; height: 50px; object-fit: cover;">
+                            </td>
+                            <td>
+                                <strong><%= product.title %></strong>
+                                <div class="text-muted small"><%= product.description.substring(0, 50) %>...</div>
+                            </td>
+                            <td>
+                                <span class="badge bg-info"><%= product.category %></span>
+                            </td>
+                            <td>$<%= product.price.toFixed(2) %></td>
+                            <td>
+                                <span class="badge bg-<%= product.isAvailable ? 'success' : 'danger' %>">
+                                    <%= product.isAvailable ? 'Available' : 'Unavailable' %>
+                                </span>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="/admin/products/edit/<%= product._id %>" 
+                                       class="btn btn-sm btn-primary">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <form action="/admin/products/delete/<%= product._id %>" 
+                                          method="POST" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-danger" 
+                                                onclick="return confirm('Are you sure you want to delete this product?')">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } else { %>
+        <div class="alert alert-info">
+            No products found. 
+            <a href="/admin/products/add" class="alert-link">Add your first product</a>
+        </div>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %> 

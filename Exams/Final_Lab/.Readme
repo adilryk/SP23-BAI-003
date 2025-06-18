@@ -1,0 +1,42 @@
+*/
+Register a new user at /auth/register
+Login with your credentials at /auth/login
+Access your orders at /orders/my-orders
+
+Register a New User:
+Go to http://localhost:3030/auth/register
+Fill in the registration form:
+Full Name: (your name)
+Email: (your email)
+Password: (at least 6 characters)
+Confirm Password: (same as password)
+Click "Register"
+You should see a success message and be redirected to the login page
+
+Login:
+Go to http://localhost:3030/auth/login
+Enter your credentials:
+Email: (the email you registered with)
+Password: (your password)
+Click "Login"
+You should be redirected to the home page with a welcome message
+
+Access Orders:
+Go to http://localhost:3030/orders/my-orders
+You should see your orders page
+If you haven't placed any orders yet, you'll see a message saying "You haven't placed any orders yet"
+Each order (if any) will show:
+Order ID
+Status
+Items
+Total amount
+Order date
+View Details button
+
+
+Logout:
+Click the logout button (which should send a POST request to /auth/logout)
+You'll be redirected to the login page
+Try accessing /orders/my-orders again - you should be redirected to the login page
+
+/*

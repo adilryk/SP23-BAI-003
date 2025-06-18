@@ -1,0 +1,250 @@
+/* Main Carousel */
+.carousel {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.carousel-inner {
+  width: 100%;
+}
+
+.carousel-item {
+  width: 100%;
+}
+
+.carousel-item img {
+  display: block;
+  width: calc(100% - 330px);
+  height: 680px;
+  object-fit: cover;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: var(--background-color);
+  margin: 0 auto;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev {
+  left: 50%;
+  transform: translate(-150%, -50%);
+}
+
+.carousel-control-next {
+  right: 50%;
+  transform: translate(150%, -50%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 15px;
+  height: 15px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  position: relative;
+  display: block;
+}
+
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.carousel-control-prev-icon::before {
+  border-color: transparent white transparent transparent;
+  margin-left: -2px;
+}
+
+.carousel-control-next-icon::before {
+  border-color: transparent transparent transparent white;
+  margin-left: 2px;
+}
+
+/* Product Cards */
+.cardsRoud {
+  flex: 0 0 calc(30px);
+  height: 210px;
+  width: 160px;
+  background-color: var(--card-bg);
+  border-radius: 50% 50% 3% 50%;
+  cursor: pointer;
+  margin: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.cardsRoud:hover {
+  transform: translateY(-7px);
+  background-color: #2a2421;
+}
+
+.imgecontont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin-top: -40px;
+}
+
+.img {
+  height: 180px;
+  width: 140px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.value {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.hafhr {
+  width: 50px;
+  margin: 0 auto;
+  border-radius: 2px;
+  border: 2px var(--primary-color) solid;
+  background-color: var(--primary-color);
+}
+
+/* Deals Cards */
+.dealsCard {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  width: 250px;
+  padding: 15px;
+  flex: 0 0 auto;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.dealsCard:hover {
+  transform: scale(1.05);
+}
+
+.cardimg {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #bbb;
+  margin: 5px 0;
+}
+
+.priceDeal {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.bttnCard {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.bttnCard:hover {
+  background-color: #b30000;
+}
+
+/* Responsive styles */
+@media (max-width: 1400px) {
+  .carousel-item img {
+    height: 480px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .carousel-item img {
+    height: 280px;
+  }
+  
+  .cardsRoud {
+    flex: 0 0 calc(25% - 15px);
+    height: 190px;
+    width: 140px;
+  }
+
+  .img {
+    height: 130px;
+    width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 80px;
+  }
+  
+  .cardsRoud {
+    flex: 0 0 calc(50% - 10px);
+    height: 170px;
+    width: 120px;
+  }
+
+  .img {
+    height: 110px;
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-item img {
+    height: 0px;
+  }
+  
+  .cardsRoud {
+    flex: 0 0 calc(100% - 10px);
+    height: 160px;
+    width: 110px;
+  }
+
+  .img {
+    height: 100px;
+    width: 90px;
+  }
+} 

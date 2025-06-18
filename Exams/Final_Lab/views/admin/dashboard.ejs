@@ -1,0 +1,81 @@
+<%- include('../partials/header') %>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Admin Dashboard</h1>
+    
+    <!-- Flash Messages -->
+    <% if (messages && messages.error) { %>
+        <div class="alert alert-danger"><%= messages.error %></div>
+    <% } %>
+    <% if (messages && messages.success) { %>
+        <div class="alert alert-success"><%= messages.success %></div>
+    <% } %>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text display-4"><%= productCount || 0 %></p>
+                    <a href="/admin/products" class="btn btn-primary">Manage Products</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Orders</h5>
+                    <p class="card-text display-4"><%= orderCount || 0 %></p>
+                    <a href="/admin/orders" class="btn btn-primary">View Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Orders -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5 class="mb-0">Recent Orders</h5>
+        </div>
+        <div class="card-body">
+            <% if (recentOrders && recentOrders.length > 0) { %>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% recentOrders.forEach(order => { %>
+                                <tr>
+                                    <td><%= order._id %></td>
+                                    <td>
+                                        <%= order.user ? order.user.name : 'N/A' %><br>
+                                        <small class="text-muted"><%= order.user ? order.user.email : 'N/A' %></small>
+                                    </td>
+                                    <td><%= new Date(order.createdAt).toLocaleDateString() %></td>
+                                    <td>
+                                        <span class="badge bg-<%= order.status === 'completed' ? 'success' : 'warning' %>">
+                                            <%= order.status || 'pending' %>
+                                        </span>
+                                    </td>
+                                    <td>$<%= (order.total || 0).toFixed(2) %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } else { %>
+                <p class="text-muted">No recent orders</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %> 

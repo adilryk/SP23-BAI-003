@@ -1,0 +1,25 @@
+<header>
+    <div class="logo-container">
+        <div class="menu-icon" onclick="toggleSidebar(event)">☰</div>
+        <img class="logo" src="/images/download.png" alt="KFC Logo">
+        <div class="sidebar-nav">
+            <button class="imgbutt">
+                <img height="20px" src="/images/Delivery.793adbaa710baf75ba78.png" alt="Delivery"> DELIVERY
+            </button>
+            <button class="collect">
+                <img height="20px" src="/images/pickup.47bb874f83ea6acb5a47.png" alt="Pickup"> PICKUP
+            </button>
+        </div>
+    </div>
+    <% if (typeof user !== 'undefined' && user) { %>
+        <span>Welcome, <%= user.name %>!</span>
+        <form action="/auth/logout" method="POST" style="display:inline;">
+            <button type="submit" class="loginBtn">Logout</button>
+        </form>
+        <a href="/complaints/new" class="btn btn-danger ms-2">Complaint</a>
+    <% } else { %>
+        <a href="/auth/login" class="loginBtn" id="logInBtnHead">Login</a>
+        <a href="/auth/register" class="loginBtn">Register</a>
+        <a href="/complaints/new" class="btn btn-danger ms-2">Complaint</a>
+    <% } %>
+</header> 
